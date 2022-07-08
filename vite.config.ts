@@ -1,7 +1,32 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
-// https://vitejs.dev/config/
+import { resolve} from 'path';
+
+function pathResolver(dir: string) {
+  return resolve(process.cwd(), '.' , dir);
+}
+
+
 export default defineConfig({
-  plugins: [vue()]
+  plugins: [
+      vue(),
+    Components({
+      resolvers: [NaiveUiResolver()]
+    })
+  ],
+  resolve: {
+    alias: [
+      {
+        find:'@',
+        replacement: pathResolver('src')
+      }
+    ]
+  },
+  server: {
+    host: 'localhost',
+    port: 8000,
+  }
 })
