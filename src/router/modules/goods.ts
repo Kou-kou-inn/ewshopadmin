@@ -1,8 +1,8 @@
 import { RouteRecordRaw} from 'vue-router'
 import Layout from '@/layout/index.vue'
-import { renderIcon } from '@/utils'
-import {Browsers} from '@vicons/ionicons5'
-const routeName = 'dashboard'
+import {Body} from '@vicons/ionicons5'
+import {renderIcon} from '@/utils'
+const routeName = 'goods'
 /**
  * @param name 路由名称, 必须设置,且不能重名
  * @param meta 路由元信息（路由附带扩展信息）
@@ -15,24 +15,25 @@ const routeName = 'dashboard'
  * */
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/dashboard',
+        path: '/goods',
         name: routeName,
         component: Layout,
-        redirect: '/dashboard/console',
+        redirect: '/goods/list',
         meta: {
-            title: 'Dashboard',
-            icon: renderIcon(Browsers),
-            sort:0,
+            title: '商品管理',
+            icon: renderIcon(Body),
+            sort:4,
+            permissions:['goods']
         },
         children: [
             {
-                path: 'console',
-                name: `${routeName}_console`,
+                path: 'list',
+                name: `${routeName}_list`,
                 meta: {
-                    title: '主控台',
-                    icon: renderIcon(Browsers),
+                    title: '商品列表',
+                    icon: renderIcon(Body),
                 },
-                component: () => import('@/views/dashboard/index.vue'),
+                component: () => import('@/views/goods/index.vue'),
             }]
     }
 ];

@@ -1,13 +1,10 @@
 <template>
   <div>
-    控制台1111
+    Home
   </div>
 </template>
 
-<script>
-export default {
-  name: "index"
-}
+<script setup>
 </script>
 
 <style scoped>

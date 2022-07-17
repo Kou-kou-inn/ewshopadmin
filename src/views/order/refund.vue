@@ -1,13 +1,10 @@
 <template>
   <div>
-    控制台1111
+    退款订单
   </div>
 </template>
 
 <script>
-export default {
-  name: "index"
-}
 </script>
 
 <style scoped>
